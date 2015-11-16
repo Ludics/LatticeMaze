@@ -5,9 +5,9 @@ using namespace std;
 class Node{
 public:
   int num,weight;
-  gNode *next;
-  gNode(int x,int y,gNode *t){
-    M = x;
+  Node *next;
+  Node(int x,int y = 0,gNode *t = NULL){
+    num = x;
     weight = y;
     next = t;
   }
@@ -15,9 +15,32 @@ public:
 
 class Graph{
 public:
-  
-
+  int Vcnt,Ecnt;
+  Node **adj;
+  Graph();
+  ~Graph();
+  void insert();
+  void remove();
+  void destroyGraph();
 };
+
+Graph::Graph(int n)
+{
+  Vcnt = n;
+  Ecnt = 0;
+  adj = new *Node[n];
+  for(int i = 0; i < n; i++){
+    adj[i] = new Node(i);
+  }
+}
+Graph::~Graph()
+{
+  destroyGraph();
+}
+void Graph::destroyGraph()
+{
+  
+}
 
 void initMazeGraph(int N){
   
